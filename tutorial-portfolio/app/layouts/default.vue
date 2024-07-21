@@ -1,44 +1,39 @@
 <template>
-  <div>
-    <nav>
-      <ul>
-        <li>
-          <NuxtLink to="/">main</NuxtLink>
-        </li>
-        <li>
-          <NuxtLink to="/about" >about</NuxtLink>
-        </li>
-        <li>
-          <NuxtLink to="/posts" >posts</NuxtLink>
-        </li>
-      </ul>
+  <div class="container mx-auto max-w-2xl">
+    <header class="flex justify-between items-center mt-5">
+      <div>
+        <NuxtLink to="/" class="text-xl font-semibold p-2 hover:bg-gray-200" >Jaewon Lee</NuxtLink>
+      </div>
+      
+      <HeaderMenu/>
+    </header>
 
-      <br>
-      <br>
-
-      <NuxtLink :to="`/board/${coin}` ">go board coin {{ coin }}</NuxtLink>
-      <br>
-      <NuxtLink :to="`/board/user/${'jaewon'}/${'naver'}` ">go user info</NuxtLink>
-      <br>
-      <NuxtLink :to="`/board/user/:username` ">go user index</NuxtLink>
-      <br>
-      <NuxtLink :to="'/board/user/:username.create'">go create?</NuxtLink>
-      <br>
-      <NuxtLink :to="'/board/user/user-form'">user-from-redirect</NuxtLink>
-      <br>
-      <NuxtLink :to="'/board/user'">user index</NuxtLink>
-      <br>
-      <NuxtLink :to="'/board/user/keep-alive'">keep-alive test</NuxtLink>
-    </nav>
-
-    <br>
-    <br>
-    <br>
-
-    <slot></slot>
+    <main class="p-2 mt-10">
+      <slot></slot>
+    </main>
   </div>
 </template>
 
 <script setup lang="ts">
-const coin = ref(3)
+// api.github.com/users/vue-nest-chat/repos
+useHead({
+  titleTemplate: '%s - Jaewon Lee',
+  link: [
+    {
+      rel: 'preconnect',
+      href: 'https://fonts.googleapis.com'
+    },
+    {
+      rel: 'stylesheet',
+      href: 'https://fonts.googleapis.com/css2?family=Roboto&display=swap',
+      crossorigin: ''
+    }
+  ]
+})
 </script>
+
+<style>
+body {
+  font-family: 'Roboto';
+}
+</style>

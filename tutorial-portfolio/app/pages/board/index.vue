@@ -1,3 +1,0 @@
-<template>
-  board index
-</template>
