@@ -7,5 +7,18 @@ export default defineNuxtConfig({
   },
   modules:[
     '@nuxtjs/tailwindcss',
-  ]
+    '@nuxtjs/color-mode',
+    '@nuxt/content'
+  ],
+  colorMode: {
+    classSuffix: ''
+  },
+  content: {
+    highlight: {
+      theme: {
+        default: "min-light",
+        dark: "min-dark",
+      },
+    },
+  },
 })
