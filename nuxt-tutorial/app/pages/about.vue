@@ -1,6 +1,7 @@
 <template>
   <div>
-    This page is about me
+    <LazyWelcome v-if="show" />
+    <button @click="show = !show">show btn</button>
   </div>
 </template>
 
@@ -9,7 +10,5 @@ useHead({
   title: 'About'
 })
 
-definePageMeta({
-  layout: false
-})
+const show = ref(false)
 </script>
