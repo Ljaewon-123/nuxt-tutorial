@@ -2,9 +2,11 @@
   <NuxtLayout >
     <NuxtPage />
   </NuxtLayout>
+  <!-- <button @click="dynamicLayout">Change lay0ut</button> -->
 </template>
 
 <script setup lang="ts">
+
 // const layout = 'another'
 // nuxtLayout에 :name추가하면 레이아웃 전역으로 사용
 

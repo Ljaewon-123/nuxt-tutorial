@@ -11,6 +11,7 @@ export default defineNuxtPlugin(() => {
 
   addRouteMiddleware(() => {
     console.log('Global Middleware')
+    return true
   }, { global: true }) // global 
 
 })
