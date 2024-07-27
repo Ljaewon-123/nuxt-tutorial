@@ -2,13 +2,17 @@
   <div>
     <LazyWelcome v-if="show" />
     <button @click="show = !show">show btn</button>
+
+    <Head>
+      <Title>
+        about page from component
+      </Title>
+    </Head>
   </div>
 </template>
 
 <script setup lang="ts">
-useHead({
-  title: 'About'
-})
+
 
 const show = ref(false)
 </script>

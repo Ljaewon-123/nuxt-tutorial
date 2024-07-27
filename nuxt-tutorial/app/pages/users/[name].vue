@@ -1,5 +1,12 @@
 <template>
-  <h1>{{ $route.params.name }}</h1>
+  <div>
+    <Head>
+      <Title>
+        {{ counter }}
+      </Title>
+    </Head>
+    <button @click="counter++">Increment</button>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -9,4 +16,6 @@ definePageMeta({
     'jaewon'
   ]
 })
+
+const counter = ref(1)
 </script>

@@ -1,6 +1,7 @@
 export default defineNuxtPlugin(() => {
 
   addRouteMiddleware((to, from) => {
+    // console.log('h2')
     if(to.path === '/database') return abortNavigation('Forbidden')
   })
 
@@ -9,10 +10,6 @@ export default defineNuxtPlugin(() => {
     if(name == 'jaewon') return abortNavigation('The name jaewon is not allowed')
   })
 
-  addRouteMiddleware(() => {
-    console.log('Global Middleware')
-    return true
-  }, { global: true }) // global 
 
 })
 

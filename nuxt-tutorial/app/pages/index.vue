@@ -44,4 +44,13 @@ useHead({
 <style scoped>
 /* 해당 페이지에만 적용  */
 @import '~/assets/styles/style.css';
+.page-enter-active,
+.page-leave-active{
+  transition: all 0.4s;
+}
+.page-enter-from,
+.pate-leave-to{
+  opacity: 0;
+  fill:blur(1rem);
+}
 </style>
