@@ -16,6 +16,9 @@
       <li>
         <NuxtLink to="/board/4"  class="link" >board 4</NuxtLink>
       </li>
+      <li>
+        <NuxtLink to="/fetch"  class="link" >Fetch</NuxtLink>
+      </li>
     </ul>
   </nav>
 </template>
