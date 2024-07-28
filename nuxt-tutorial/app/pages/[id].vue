@@ -12,6 +12,10 @@
 const route = useRoute()
 definePageMeta({
   validate(r) {
+    throw createError({
+      statusCode: 404,
+      message: 'page make error!!'
+    })
     return /^\d+$/.test(r.params.id as any)
   },
   layout: 'custom'

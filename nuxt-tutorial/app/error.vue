@@ -8,10 +8,17 @@
       <h2 class="text-xl text-gray-500 dark:text-gray-400">
         {{ error?.statusMessage }}
       </h2>
+      <h3>
+        {{ error?.message }}
+      </h3>
     </section>
   </NuxtLayout>
 </template>
 
 <script setup lang="ts">
-defineProps({ error: Object })
+const props = defineProps({ error: Object })
+
+
+
+
 </script>
