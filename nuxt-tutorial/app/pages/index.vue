@@ -14,6 +14,15 @@
 
 <script setup lang="ts">
 import '~/assets/styles/style.css' // 모든 파일에 전역 
+
+
+definePageMeta({
+  keepalive: {
+    include: ['todo']
+  }
+})
+
+
 useSeoMeta({
   title: 'Main Page',
   description: 'This is the main page',
@@ -26,6 +35,8 @@ useSeoMeta({
   twitterImage: '[twitter:image]',
   twitterCard: 'summary'
 })
+
+
 
 useHead({
   htmlAttrs: {

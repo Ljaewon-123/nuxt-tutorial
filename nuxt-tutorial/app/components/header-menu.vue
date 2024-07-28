@@ -19,6 +19,9 @@
       <li>
         <NuxtLink to="/fetch"  class="link" >Fetch</NuxtLink>
       </li>
+      <li>
+        <NuxtLink to="/todo"  class="link" >todos</NuxtLink>
+      </li>
     </ul>
   </nav>
 </template>
