@@ -4,6 +4,6 @@
 
 <script setup lang="ts">
 definePageMeta({
-  redirect: '/nowplaying'
+  redirect: '/now-playing'
 })
 </script>
