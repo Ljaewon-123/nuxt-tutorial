@@ -11,6 +11,15 @@ export default defineNuxtConfig({
     '~/assets/styles/style.css'
   ],
 
+  runtimeConfig:{
+    api: process.env.apikey,
+    secret: '123', // 서버측만 
+    public:{
+      publciKey:'45661',
+      env: process.env.apikey
+    }
+  },
+
   modules: ['@nuxtjs/tailwindcss'],
   app:{
     pageTransition: {

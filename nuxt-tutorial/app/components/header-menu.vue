@@ -22,6 +22,12 @@
       <li>
         <NuxtLink to="/todo"  class="link" >todos</NuxtLink>
       </li>
+      <li>
+        <NuxtLink to="/server"  class="link" >server</NuxtLink>
+      </li>
+      <li>
+        <NuxtLink to="posts"  class="link" >post</NuxtLink>
+      </li>
     </ul>
   </nav>
 </template>

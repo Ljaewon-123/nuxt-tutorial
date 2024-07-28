@@ -12,6 +12,7 @@
         {{ error?.message }}
       </h3>
     </section>
+    <button @click="handleErr">back to home</button>
   </NuxtLayout>
 </template>
 
@@ -19,6 +20,10 @@
 const props = defineProps({ error: Object })
 
 
-
+const handleErr = () => {
+  clearError({
+    redirect: '/'
+  })
+}
 
 </script>
