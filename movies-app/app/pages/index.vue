@@ -69,6 +69,7 @@ const {data} = await useFetch('/api/movies/discover',{
   transform: (data: ApiResponse) => {
     movies.value = data.movies.results
     series.value = data.series.results
+    return data
   }
 })
 </script>
