@@ -38,7 +38,7 @@ defineProps([
 const imageSiteUrl = 'https://image.tmdb.org/t/p/w500'
 
 const itemState = useState('chosenItem', () => {})
-const changeItemState = (item) => {
+const changeItemState = (item: void) => {
   itemState.value = item
 }
 </script>
