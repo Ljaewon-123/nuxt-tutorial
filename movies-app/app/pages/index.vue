@@ -62,14 +62,22 @@ interface ApiResponse {
 }
 
 
-const movies = useState<any[]>(() => [])
-const series = useState<any[]>(() => [])
+// const movies = useState<any[]>(() => [])
+// const series = useState<any[]>(() => [])
+
+const movies = ref()
+const series = ref()
 
 const {data} = await useFetch('/api/movies/discover',{
   transform: (data: ApiResponse) => {
-    movies.value = data.movies.results
-    series.value = data.series.results
-    return data
+    const movies = data.movies.results
+    const series = data.series.results
+    return { movies, series }
   }
 })
+
+movies.value = data.value?.movies
+series.value = data.value?.series
+
+
 </script>
