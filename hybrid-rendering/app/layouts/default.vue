@@ -15,10 +15,14 @@
       <NuxtLink to="/old-page">oldpage</NuxtLink>
       <br>
       <NuxtLink to="/i18n">i18n</NuxtLink>
+      <br>
+      <NuxtLink to="/login">Login</NuxtLink>
+      <br>
+      <NuxtLink to="/example">Wrong fetch example</NuxtLink>
       <br><br>
     </div>
-    <main>
+    <v-main>
       <slot></slot>
-    </main>
+    </v-main>
   </div>
 </template>

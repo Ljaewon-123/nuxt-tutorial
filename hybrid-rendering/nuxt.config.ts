@@ -7,6 +7,9 @@ export default defineNuxtConfig({
   future: {
     compatibilityVersion: 4,
   },
+  runtimeConfig:{
+    apiUrl : process.env.API_URL
+  },
 
   app:{
     head: {
