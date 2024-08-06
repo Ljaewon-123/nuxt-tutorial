@@ -6,5 +6,11 @@ export default defineNuxtConfig({
     compatibilityVersion: 4,
   },
   extends: ['@nuxt/ui-pro'],
-  modules: ['@nuxt/ui']
+  modules: ['@nuxt/ui'],
+  runtimeConfig:{
+    reids:{
+      host: 2179,
+      port: 1883
+    }
+  }
 })
