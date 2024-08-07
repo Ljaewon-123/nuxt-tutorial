@@ -1,4 +1,5 @@
-import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
+import { transformAssetUrls } from 'vite-plugin-vuetify'
+import setupVuetify from './setupvuetify'
 
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
@@ -37,7 +38,6 @@ export default defineNuxtConfig({
   build: {
     transpile: ['vuetify'],
   },
-
   vite: {
     vue: {
       template: {
@@ -45,20 +45,8 @@ export default defineNuxtConfig({
       },
     },
   },
-  modules: [
-    "@nuxt/content", 
-    'nuxt-icon', 
-    '@nuxtjs/i18n',
 
-
-
-    (_options, nuxt) => {
-      nuxt.hooks.hook('vite:extendConfig', (config) => {
-        // @ts-expect-error
-        config.plugins.push(vuetify({ autoImport: true }))
-      })
-    },
-  ],
+  modules: [setupVuetify(), "@nuxt/content", '@nuxtjs/i18n', '@nuxt/image'],
   i18n: {
     vueI18n: './app/i18n/i18n.config.ts' // if you are using custom path, default
   }

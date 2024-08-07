@@ -13,12 +13,13 @@
     "@amcharts/amcharts4": "^4.10.39",
     "@mdi/font": "^7.4.47",
     "@nuxt/content": "^2.13.2",
+    "@vitejs/plugin-vue": "^5.1.2",
     "nuxt": "^3.12.4",
     "vue": "latest"
   },
   "devDependencies": {
+    "@nuxt/image": "^1.7.0",
     "@nuxtjs/i18n": "^8.3.3",
-    "nuxt-icon": "^1.0.0-beta.7",
     "vite-plugin-vuetify": "^2.0.3",
     "vuetify": "^3.6.13",
     "vuetify-nuxt-module": "^0.16.1"
