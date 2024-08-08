@@ -6,9 +6,7 @@ export default defineNuxtConfig({
   experimental: {
     componentIslands: true
   },
-  future: {
-    compatibilityVersion: 4,
-  },
+
   runtimeConfig:{
     apiUrl : process.env.API_URL
   },
@@ -46,5 +44,9 @@ export default defineNuxtConfig({
   },
   i18n: {
     vueI18n: './app/i18n/i18n.config.ts' // if you are using custom path, default
+  },
+
+  future: {
+    compatibilityVersion: 4,
   },
 })

@@ -6,15 +6,20 @@
       <v-btn @click="count++">click</v-btn>
     </v-card>
     {{ count }}
+    <br>
+    {{ props.message }}
   </div>
 </template>
 
 <script setup lang="ts">
 
+const props = defineProps({
+  message: String
+})
+
+const count = defineModel({ default: 0 })
+
 const content = "<h1> what do you want?</h1>"
-
-
-const count = ref(0)
 
 
 
