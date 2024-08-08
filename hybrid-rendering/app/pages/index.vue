@@ -32,6 +32,5 @@
     <p>
       서버or, route미들웨어 토큰거부 
     </p>
-    
   </div>
 </template>

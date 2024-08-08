@@ -1,10 +1,11 @@
 import { transformAssetUrls } from 'vite-plugin-vuetify'
-import setupVuetify from './setupvuetify'
 
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
-
+  experimental: {
+    componentIslands: true
+  },
   future: {
     compatibilityVersion: 4,
   },
@@ -35,19 +36,15 @@ export default defineNuxtConfig({
     '/old-page': { redirect: '/new-page' },
   },
 
-  build: {
-    transpile: ['vuetify'],
+  modules: ["@nuxt/content", '@nuxtjs/i18n', '@nuxt/image', "vuetify-nuxt-module"],
+  vuetify:{
+    vuetifyOptions:{
+      theme:{
+        defaultTheme: 'dark'
+      }
+    }
   },
-  vite: {
-    vue: {
-      template: {
-        transformAssetUrls,
-      },
-    },
-  },
-
-  modules: [setupVuetify(), "@nuxt/content", '@nuxtjs/i18n', '@nuxt/image'],
   i18n: {
     vueI18n: './app/i18n/i18n.config.ts' // if you are using custom path, default
-  }
+  },
 })

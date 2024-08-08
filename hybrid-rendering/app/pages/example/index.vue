@@ -49,7 +49,7 @@ const body = computed(() => {
 })
 const didItWork = ref(false)
 
-// didItWork이 true가 된이후로 반응형 변수가 바뀔때마다 데이터를 호출 XXX
+// didItWork이 true가 된이후로 반응형 변수가 바뀔때마다 데이터를 호출 / XXX
 // async function onSubmit(){
 //   const { error } = await useFetch('/api/example',{
 //     method: 'POST',
@@ -65,6 +65,7 @@ const didItWork = ref(false)
 // 성공시는 괜찮은데 실패할때마다 변수 변화량만큼의 추가 데이터 패칭
 // 실패 => 제출취소시 이전에 가졌던 body와 같은 인스턴스를 
 // 추가로 생성함
+// 하지만 실패를 해도 실제로는 한번만 보내진다.. 뭐지... 업데이트 fix한건가 
 // async function onSubmit(){
 //   try {
 //     const data = await $fetch('/api/example',{

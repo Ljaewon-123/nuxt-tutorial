@@ -19,6 +19,8 @@
       <NuxtLink to="/login">Login</NuxtLink>
       <br>
       <NuxtLink to="/example">Wrong fetch example</NuxtLink>
+      <br>
+      <NuxtLink to="/island">Island</NuxtLink>
       <br><br>
     </div>
     <v-main>
