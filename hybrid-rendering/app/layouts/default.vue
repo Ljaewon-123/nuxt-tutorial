@@ -21,6 +21,8 @@
       <NuxtLink to="/example">Wrong fetch example</NuxtLink>
       <br>
       <NuxtLink to="/island">Island</NuxtLink>
+      <br>
+      <NuxtLink to="/token">token</NuxtLink>
       <br><br>
     </div>
     <v-main>

@@ -7,7 +7,7 @@
           cols="12"
         >
           <v-text-field
-            v-model="refBody.email"
+            v-model="email"
             :rules="emailRules"
             label="E-mail"
             hide-details
@@ -18,7 +18,7 @@
           cols="12"
         >
           <v-text-field
-            v-model="refBody.password"
+            v-model="password"
             :counter="10"
             label="Password"
             hide-details
@@ -32,9 +32,14 @@
       {{ callCount }}
 
       <br>
-      {{ atToken }}
+      <!-- {{ atToken }} -->
     </v-container>
   </v-form>
+
+  <v-card>
+
+  </v-card>
+
 </div>
 </template>
 
@@ -42,10 +47,10 @@
 const valid = ref(false)
 const email = ref('test@test.com')
 const password = ref('1234')
-const refBody = ref({
-  email: '',
-  password: ''
-})
+// const refBody = ref({
+//   email: '',
+//   password: ''
+// })
 const body = computed(() => {
   return {
     email: email.value,
@@ -136,7 +141,7 @@ const atToken = useCookie('atToken')
  *  **/
 const { data ,error, execute } = await useFetch('/api/login',{
   method: 'POST',
-  body: refBody,
+  body: body,
   immediate:false,
   watch: false,
   onResponse: () => callCount.value++

@@ -1,3 +1,4 @@
+import { cookieOptions } from "~~/server/options/cookie.option"
 import { Tokens } from "~~/server/types/token.tyes"
 
 export default defineEventHandler(async event => {
@@ -15,8 +16,11 @@ export default defineEventHandler(async event => {
     body
   })
 
-  setCookie(event, 'atToken', data.access_token)
-  setCookie(event, 'rtToken', data.refresh_token)
+  setCookie(event, 'atToken', data.access_token, cookieOptions)
+  setCookie(event, 'rtToken', data.refresh_token, cookieOptions)
+
+  // const access = getCookie(event, 'atToken')
+  // console.log(access)
   // setCookie(event, 'toekn', cooies)
 
   console.log('fetch')
