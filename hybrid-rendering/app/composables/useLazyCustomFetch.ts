@@ -9,6 +9,8 @@ export function useLazyCustomFetch<T>(
     lazy: true,
     $fetch: $fetch.create({
       async onResponseError({ request, response, options }) {
+        const atToken = useCookie('atToken')
+        const rtToken = useCookie('rtToken')
         const { status } = response
     
         if(status == 401){
@@ -19,12 +21,18 @@ export function useLazyCustomFetch<T>(
             await fetch.refresh()
           }
           catch{
+            atToken.value = null;
+            rtToken.value = null;
             throw showError({
               statusCode: 403,
               statusMessage: 'invaild Auth login again'
             })
           }
         }
+
+        //  401 아닌것들은 처리 어떻게?? 모달? 아니면 페이지 이동?
+
+
       }
     })
   })

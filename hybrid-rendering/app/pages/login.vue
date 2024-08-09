@@ -37,7 +37,7 @@
   </v-form>
 
   <v-card>
-
+    <v-btn @click="deleteCookie" class="mt-2" block>Delete Cookie</v-btn>
   </v-card>
 
 </div>
@@ -71,8 +71,6 @@ const emailRules=  [
 ]
 
 const callCount = ref(0)
-
-const atToken = useCookie('atToken')
 
 //  아예 body가 변하지 않거나 하나의 변화마다 데이터를 패칭하거나 
 // const { data, refresh } = await useFetch('/api/login', {
@@ -139,6 +137,17 @@ const atToken = useCookie('atToken')
  * 에러시에도 여러번 패칭되는건 없는거 같음 
  * 
  *  **/
+const deleteCookie = () => {
+  // token.value = null
+  
+  // 아..... 옵션때문에 여기에서 접근안됨;;;; ㅋㅋㅋㅋㅋ
+
+  showError({
+    statusCode: 403,
+    statusMessage: 'delete Cookie test'
+  })
+}
+
 const { data ,error, execute } = await useFetch('/api/login',{
   method: 'POST',
   body: body,
