@@ -2,23 +2,28 @@ import type { NitroApp } from "nitropack";
 import { Server as Engine } from "engine.io";
 import { Server } from "socket.io";
 import { defineEventHandler } from "h3";
-import { useNuxtApp } from "nuxt/app";
 
+const engine = new Engine();
+export const io = new Server();
 export default defineNitroPlugin((nitroApp: NitroApp) => {
   
-  const engine = new Engine();
-  const io = new Server();
   
   io.bind(engine);
   
   io.on("connection", (socket) => {
-    // ...
-    console.log('connection socket io??')
-  });
 
-  io.on("test", (socket) => {
-    // ...
-    console.log('test')
+    // socket.on('test', mess => {
+    //   console.log(mess)
+    // })
+
+    // socket.on('replay', mess => {
+    //   console.log(mess)
+    // })
+
+    // socket.emit('test', 'what')
+
+
+    console.log('connection socket io')
   });
 
   nitroApp.router.use("/socket.io/", defineEventHandler({
