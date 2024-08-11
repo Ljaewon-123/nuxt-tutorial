@@ -57,7 +57,13 @@ const links = [{
   label: 'Dashboard',
   icon: 'prime:android',
   to: '/dashboard',
-}]
+},
+{
+  label: 'Socket-io',
+  icon: 'prime:android',
+  to: '/socketio',
+},
+]
 </script>
 
 

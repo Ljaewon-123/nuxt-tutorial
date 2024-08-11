@@ -1,20 +1,24 @@
 <template>
 <div>
+  <ConnectionClient></ConnectionClient>
   <div>
     <input v-model="message" type="text" name="" id="">
   </div>
-  <UDashboardSearchButton @click="execute"></UDashboardSearchButton>
+  
   <p>
     {{ data }}
   </p>
+
 </div>
 </template>
 
 <script setup lang="ts">
+import ConnectionClient from '~/components/connection.client.vue';
+
 
 const message = ref('Tell me a short story about a happy Llama.')
 
-const {data, execute} = await useFetch('/api/langchain/signal',{
+const {data, execute} = await useFetch('/api/socket/test2',{
   method:'post',
   server:false,
   lazy:true,
@@ -24,6 +28,7 @@ const {data, execute} = await useFetch('/api/langchain/signal',{
   },
   watch:false
 })
+
 
 
 </script>
