@@ -11,6 +11,9 @@ export default defineNuxtConfig({
     reids:{
       host: 2179,
       port: 1883
+    },
+    public:{
+      rootPath: process.cwd()
     }
-  }
+  },
 })
