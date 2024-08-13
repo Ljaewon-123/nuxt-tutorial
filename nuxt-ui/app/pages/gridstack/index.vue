@@ -127,6 +127,7 @@ function makeWidget(item) {
   const elSelector = `#${item.id}`;
   return grid.value.makeWidget(elSelector);
 }
+
 async function addWidget() {
   const widgetCount = widgets.value.length + 1;
   const widget = {
@@ -138,10 +139,14 @@ async function addWidget() {
     },
   };
   widgets.value.push(widget);
-  debugger
+  // debugger
+  // // 여기에서 비대화형으로 추가되고 
   await nextTick();
-  debugger
-  makeWidget(widget);
+  // // 이 디버거 에서 제대로 걸렸어야함 
+  // // 삭제후 처음만 제대로 추가안됨 
+  // 콘솔에는 있는데 template가면 없네;;; 
+  // debugger
+  makeWidget(widget)
 
 }
 function deleteWidget(widget) {
