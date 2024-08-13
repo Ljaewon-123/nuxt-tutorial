@@ -1,7 +1,7 @@
 <template>
   <UHeader :links="links">
     <template #logo>
-      <Logo class="w-auto h-6" />
+      <!-- <Logo class="w-auto h-6" /> -->
     </template>
 
     <template #right>
@@ -62,6 +62,11 @@ const links = [{
   label: 'Socket-io',
   icon: 'prime:android',
   to: '/socketio',
+},
+{
+  label: 'Grid Stack',
+  icon: 'prime:android',
+  to: '/gridstack',
 },
 ]
 </script>
