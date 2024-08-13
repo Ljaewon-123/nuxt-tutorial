@@ -13,6 +13,10 @@
     <v-btn @click="postExecute">post</v-btn>
 
     {{ postData }}
+
+    <br>
+
+    <v-btn @click="open">open token</v-btn>
   </div>
 </template>
 
@@ -39,5 +43,11 @@ const { data: postData, execute: postExecute } = await useLazyCustomFetch('/api/
   watch: false,
   immediate: false,
 })
+
+const open = async() => {
+  await $fetch('/api/token/cookie-open',{
+    method:'post'
+  })
+}
 
 </script>

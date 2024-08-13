@@ -1,5 +1,5 @@
 import { cookieOptions } from "~~/server/options/cookie.option"
-import { Tokens } from "~~/server/types/token.tyes"
+import { TempToken, Tokens } from "~~/server/types/token.tyes"
 
 export default defineEventHandler(async event => {
   
@@ -11,13 +11,18 @@ export default defineEventHandler(async event => {
   // const rtToken = useCookie('rtToken')
   
   const body = await readBody(event)
-  const data = await $fetch<Tokens>(`${config.apiUrl}/auth/local/signin`, {
+  const data = await $fetch<TempToken>(`${config.apiUrl}/auth/email/signin`, {
     method: 'post',
     body
   })
 
-  setCookie(event, 'atToken', data.access_token, cookieOptions)
-  setCookie(event, 'rtToken', data.refresh_token, cookieOptions)
+  setCookie(event, 'temp', data.token , {
+    ...cookieOptions,
+    maxAge: 60 * 3 // 3m 
+  })
+
+  // setCookie(event, 'atToken', data.access_token, cookieOptions)
+  // setCookie(event, 'rtToken', data.refresh_token, cookieOptions)
 
   // const access = getCookie(event, 'atToken')
   // console.log(access)

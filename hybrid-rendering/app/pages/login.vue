@@ -1,6 +1,6 @@
 <template>
 <div>
-  <v-form @submit.prevent="submitLogin" v-model="valid">
+  <v-form ref="form" @submit.prevent="submitLogin" v-model="valid">
     <v-container>
       <v-row>
         <v-col
@@ -41,12 +41,19 @@
   </v-card>
 
 </div>
+
+<v-dialog v-model="dialog" persistent >
+  <lazy-verify-otp></lazy-verify-otp>
+</v-dialog>
+
 </template>
 
 <script setup lang="ts">
 const valid = ref(false)
 const email = ref('test@test.com')
 const password = ref('1234')
+const form = ref()
+const dialog = ref(false)
 // const refBody = ref({
 //   email: '',
 //   password: ''
@@ -157,10 +164,20 @@ const { data ,error, execute } = await useFetch('/api/login',{
 })
 
 async function submitLogin(){
+  
+  const { valid } = await form.value.validate()
+
+  // 성공시 얼럿 
+  if(valid) alert('ha?')
+
   await execute()
 
+  if(!error.value){
+    dialog.value = true
+  }
+
   if(error.value){
-    console.log('!!!!!!!!!!!!!!')
+    console.log('error', error.value)
   }
 
 }

@@ -1,8 +1,20 @@
-export default defineNuxtRouteMiddleware((to, from) => {
+export default defineNuxtRouteMiddleware( async (to, from) => {
 
-  const cookie = useCookie('atToken')
   
-  console.log('when i play?.... 서버쪽에서 실행되어야하네 ')
+  console.log('언제 실행?', to)
   
+  // if(to.name == 'login') {
+  //   return 
+  // }
+
+  // const verify = await $fetch('/api/token/cookie-open',{
+  //   method:'post'
+  // })
+
+  // console.log(verify,'??')
+
+  // if(verify) return verify 
+
+  // return navigateTo('/login')
 
 })

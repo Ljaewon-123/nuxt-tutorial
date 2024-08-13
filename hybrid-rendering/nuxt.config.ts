@@ -4,11 +4,13 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
   experimental: {
-    componentIslands: true
+    componentIslands: true,
+    clientFallback: true
   },
 
   runtimeConfig:{
-    apiUrl : process.env.API_URL
+    apiUrl : process.env.API_URL,
+    atSecret: process.env.AT_SECRET,
   },
 
   app:{
