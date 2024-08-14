@@ -1,27 +1,29 @@
 import { cookieOptions } from "~~/server/options/cookie.option"
-import { Tokens } from "~~/server/types/token.tyes"
+import { IdTokens, Tokens } from "~~/server/types/token.tyes"
 
 export default defineEventHandler(async event => {
   
   const config = useRuntimeConfig(event)
   const tempToken = getCookie(event, 'temp' )
   const body = await readBody(event)
-  const data = await $fetch<Tokens>(`${config.apiUrl}/auth/email/verification`, {
+  const data = await $fetch<IdTokens>(`${config.apiUrl}/auth/email/verification`, {
     method: 'post',
     headers:{
       'Authorization' : 'Bearer ' + tempToken
     },
-    body
+    body,
   })
 
-  setCookie(event, 'temp', '', {
-    ...cookieOptions,
-    maxAge: 0
-  })
+  deleteCookie(event, "temp");
+  // setCookie(event, 'temp', '', {
+  //   ...cookieOptions,
+  //   maxAge: 0
+  // })
 
-  console.log('@@@@@@@@@@@@@@')
-  // setCookie(event, 'atToken', data.access_token, cookieOptions)
-  // setCookie(event, 'rtToken', data.refresh_token, cookieOptions)
+  // console.log('@@@@@@@@@@@@@@', data)
+  // await useStorage('redis').setItem(`${data.userId}`, { hello: 'world' },{ ttl: 60 * 15 })
+  setCookie(event, 'atToken', data.access_token, cookieOptions)
+  setCookie(event, 'rtToken', data.refresh_token, cookieOptions)
 
 
   

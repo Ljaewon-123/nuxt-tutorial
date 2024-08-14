@@ -168,7 +168,7 @@ async function submitLogin(){
   const { valid } = await form.value.validate()
 
   // 성공시 얼럿 
-  if(valid) alert('ha?')
+  if(valid) alert('roles match')
 
   await execute()
 

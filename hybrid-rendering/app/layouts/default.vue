@@ -1,10 +1,10 @@
 <template>
   <div>
-    <h1>Hibrid rendering in Nuxt</h1>
+    <h1>Hybrid rendering in Nuxt</h1>
     <div>
       <NuxtLink to="/">Home</NuxtLink>
       <br>
-      <NuxtLink to="/admin">admin</NuxtLink>
+      <!-- <NuxtLink to="/admin">admin</NuxtLink> -->
       <br>
       <NuxtLink to="/admin/spa">SPA</NuxtLink>
       <br>
@@ -24,9 +24,21 @@
       <br>
       <NuxtLink to="/token">token</NuxtLink>
       <br><br>
+      <v-btn @click="logout">log out</v-btn>
     </div>
     <v-main>
       <slot></slot>
     </v-main>
   </div>
 </template>
+
+<script setup lang="ts">
+
+const logout = async() => {
+
+  const a = await $fetch('/api/token/delete-all-cookie',{method:'POST'})
+  console.log(a ,'logout@@@!@#!@#')
+  navigateTo('/login')
+}
+
+</script>

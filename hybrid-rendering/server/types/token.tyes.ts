@@ -6,3 +6,5 @@ export type Tokens = {
 export type TempToken = {
   token: string
 }
+
+export type IdTokens = Tokens & { userId: number };

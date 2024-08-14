@@ -37,6 +37,8 @@
     <div class="text-caption">
       Didn't receive the code? <a href="#" @click.prevent="resendHandler">Resend</a>
     </div>
+    {{ status }}
+    {{error}}
   </v-card>
 </template>
 
@@ -44,7 +46,18 @@
 const otp = ref('')
 const { data ,error, execute, status } = await useFetch('/api/login/verified-code',{
   method: 'POST',
-  body: otp,
+  body: { code: otp },
+  immediate:false,
+  watch: false,
+})
+
+const { 
+  data: resendData ,
+  error: resendError, 
+  execute: resned, 
+  status: resnedStatus 
+} = await useFetch('/api/login/resend-email',{
+  method: 'POST',
   immediate:false,
   watch: false,
 })
@@ -52,10 +65,29 @@ const { data ,error, execute, status } = await useFetch('/api/login/verified-cod
 const verification = async() => {
   await execute()
   otp.value = ''
+
+  if(!error.value){
+    navigateTo('/')
+  }
+  if(error.value){
+    // 얼럿만??
+    throw showError({
+      statusCode: 401,
+      statusMessage: 'try again'
+    })
+  }
 }
 
-const resendHandler = () => {
+const resendHandler = async() => {
+  await resned()
   otp.value = ''
+
+  if(resendError.value){
+    throw showError({
+      statusCode: 500,
+      statusMessage: 'mail fail try again'
+    })
+  }
 }
 
 </script>

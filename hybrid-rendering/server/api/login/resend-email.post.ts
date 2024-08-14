@@ -5,7 +5,7 @@ export default defineEventHandler(async event => {
   
   const config = useRuntimeConfig(event)
   const tempToken = getCookie(event, 'temp' )
-  const data = await $fetch<TempToken>(`${config.apiUrl}/auth/email/verification`, {
+  const data = await $fetch<TempToken>(`${config.apiUrl}/auth/email/resend`, {
     method: 'post',
     headers:{
       'Authorization' : 'Bearer ' + tempToken

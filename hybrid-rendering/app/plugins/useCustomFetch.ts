@@ -1,5 +1,7 @@
 import type { $fetchMethod } from "~/types/$fetch-method.type"
 
+// 이거 사용 안함 ******************************
+
 export default defineNuxtPlugin(() => {
   const $customFetch = $fetch.create({
     async onResponseError({ request, response, options }) {

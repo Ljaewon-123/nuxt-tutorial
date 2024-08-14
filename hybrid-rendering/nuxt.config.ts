@@ -2,7 +2,13 @@ import { transformAssetUrls } from 'vite-plugin-vuetify'
 
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
-  devtools: { enabled: true },
+  devtools: {
+    enabled: true,
+
+    timeline: {
+      enabled: true,
+    },
+  },
   experimental: {
     componentIslands: true,
     clientFallback: true
@@ -18,7 +24,14 @@ export default defineNuxtConfig({
       title: 'Hybrid Rendering'
     }
   },
-
+  nitro: {
+    storage: {
+      redis: {
+        driver: "redis",
+        url: "redis://localhost:6379",
+      },
+    },
+  },
   routeRules:{
     // Homepage pre-rendered at build time
     '/': { prerender: true },
@@ -47,7 +60,12 @@ export default defineNuxtConfig({
   i18n: {
     vueI18n: './app/i18n/i18n.config.ts' // if you are using custom path, default
   },
-
+  plugins:[
+    {
+      src: '~/plugins/page-auth.ts',
+      mode: 'client'
+    }
+  ],
   future: {
     compatibilityVersion: 4,
   },
