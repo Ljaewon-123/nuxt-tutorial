@@ -13,6 +13,9 @@ export default defineNuxtRouteMiddleware( async (to, from) => {
 
   const count = useState('counter', () => {})
 
+  const path = useCookie('path')
+  path.value = 'save'
+
   const  nuxtApp  = useNuxtApp()
   const test = userTestStore(nuxtApp.$pinia)
   const { backFullPath } = storeToRefs(test);
