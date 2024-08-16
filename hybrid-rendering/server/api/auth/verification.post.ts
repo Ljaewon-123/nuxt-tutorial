@@ -1,11 +1,12 @@
-import { cookieOptions } from "~~/server/options/cookie.option"
+import { accessCookieOptions } from "~~/server/options/cookie.option"
 import { Tokens } from "~~/server/types/token.tyes"
 import { v4 as uuidv4 } from 'uuid';
-import { useNuxtApp } from "nuxt/app";
+import { navigateTo, useNuxtApp } from "nuxt/app";
 
 export default defineEventHandler( async event => {
   const config = useRuntimeConfig(event)
-
+  // const url = getRequestURL(event)
+  // console.log(url, 'url !!!!')
   // await new Promise((res, rej) => {
   //   setTimeout(res, 3000)
   // })
@@ -14,7 +15,10 @@ export default defineEventHandler( async event => {
   // const cookie = parseCookies(event)
   // console.log(cookie,'parsecookie 쿠키 옵션과 무관하게 안나옴')
   const atToken = getCookie(event, 'atToken')
-  console.log(atToken)
+  console.log('?')
+  // console.log(atToken, 'access token 로그인상태 예상 ?')
+  if(!atToken) return { isInit: true, resultcode: -1 }
+
   // await useStorage('redis').setItem('foo:world', { hello: 'world' },{ ttl: 30 })
   // await useStorage('redis').setItem('foo:world', { hello: 'world' })
   // const redis = await useStorage('redis').getItem('foo:world')
@@ -40,13 +44,14 @@ export default defineEventHandler( async event => {
 
   // ....갑자기 그냥 되네...? 나의 노력과 고민과 시간은???? 
   // 로그인시에는 이제 되는데 로그인 안되었을때 접근은 여전히 문제임 
-  const data = await $fetch<boolean>(`${config.apiUrl}/auth/local/signature`,{
+  const data = await $fetch<any>(`${config.apiUrl}/auth/local/signature`,{
     method: 'post',
     headers:{
       'Authorization' : 'Bearer ' + atToken
     },
   })
-
-  return data
-  return 'done'
+  console.log(data,'!')
+  data.resultcode == 0
+  return { isInit: false, resultcode: data.resultcode }
+  // return 'done'
 })

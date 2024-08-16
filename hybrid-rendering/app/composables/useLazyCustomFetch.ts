@@ -10,8 +10,9 @@ export function useLazyCustomFetch<T>(
     $fetch: $fetch.create({
       async onResponseError({ request, response, options }) {
         const { status } = response
-        console.log(response, '@@@@@@@@@@@@@@@@@!!!!!!!!!!!!!!!!!!!!!!!!')
+        // console.log(response, '@@@@@@@@@@@@@@@@@!!!!!!!!!!!!!!!!!!!!!!!!')
         
+        // 무한 loop예방을 위한 커스텀 예외 코드 
         if(status == 401){
           try{
             await $fetch('/api/auth/refresh',{

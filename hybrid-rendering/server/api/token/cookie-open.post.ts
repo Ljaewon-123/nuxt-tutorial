@@ -1,4 +1,4 @@
-import { cookieOptions } from "~~/server/options/cookie.option"
+import { accessCookieOptions } from "~~/server/options/cookie.option"
 import jwt from 'jsonwebtoken'
 
 export default defineEventHandler( async event => {

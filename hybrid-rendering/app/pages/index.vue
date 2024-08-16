@@ -54,9 +54,8 @@ import { useCookie } from '#app';
 //     return true
 //   }
 // })
-
-const test = useCookie('test')
-test.value = "3"
+// const route = useRoute()
+// console.log(route, 'page/index route')
 
 // console.log(test.value)
 </script>

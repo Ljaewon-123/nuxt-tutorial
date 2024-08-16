@@ -10,7 +10,7 @@ export function useCustomFetch<T>(
       async onResponseError({ request, response, options }) {
 
         const { status } = response
-    
+        // api custom code 
         if(status == 401){
           try{
             await $fetch('/api/auth/refresh',{
@@ -20,7 +20,7 @@ export function useCustomFetch<T>(
           }
           catch{
             throw showError({
-              statusCode: 403,
+              statusCode: status,
               statusMessage: 'invaild Auth login again'
             })
           }

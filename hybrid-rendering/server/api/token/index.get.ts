@@ -6,7 +6,7 @@ export default defineEventHandler(async event => {
   
   const query = getQuery(event)
   const atToken = getCookie(event, 'atToken' )
-  const data = await $fetch<Tokens>(`${config.apiUrl}/test`, {
+  const data = await $fetch<Tokens>(`${config.apiUrl}/evo`, {
     method: 'get',
     headers:{
       'Authorization' : 'Bearer ' + atToken

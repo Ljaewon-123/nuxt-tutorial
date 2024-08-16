@@ -1,4 +1,4 @@
-import { transformAssetUrls } from 'vite-plugin-vuetify'
+import type { NuxtPage } from 'nuxt/schema'
 
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
@@ -48,22 +48,29 @@ export default defineNuxtConfig({
     // Add cors headers on API routes
     '/old-page': { redirect: '/new-page' },
   },
+  // global보다 좋은점은 적어도 하이드레이트 에러는 안난다는거 하나 최초접근 해결 안됨 
   hooks:{
     'pages:extend'(pages){
-      pages.forEach(page => {
-        page.meta ||= {}
-        page.meta.middleware = ['each-page']
-      })
+      function setMiddleware (pages: NuxtPage[]) {
+        pages.forEach(page => {
+          page.meta ||= {}
+          page.meta.middleware = ['each-page']
+        })
+      }
+      setMiddleware(pages)
     }
   },
 
-  modules: ["@nuxt/content", '@nuxtjs/i18n', '@nuxt/image', "vuetify-nuxt-module"],
+  modules: ["@nuxt/content", '@nuxtjs/i18n', '@nuxt/image', "vuetify-nuxt-module", '@pinia/nuxt'],
   vuetify:{
     vuetifyOptions:{
       theme:{
         defaultTheme: 'dark'
       }
     }
+  },
+  pinia: {
+    storesDirs: ['./stores/**', './custom-folder/stores/**'],
   },
   i18n: {
     vueI18n: './app/i18n/i18n.config.ts' // if you are using custom path, default

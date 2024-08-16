@@ -1,4 +1,4 @@
-import { cookieOptions } from "~~/server/options/cookie.option"
+import { accessCookieOptions } from "~~/server/options/cookie.option"
 import { TempToken, Tokens } from "~~/server/types/token.tyes"
 
 export default defineEventHandler(async event => {
@@ -17,7 +17,7 @@ export default defineEventHandler(async event => {
   })
 
   setCookie(event, 'temp', data.token , {
-    ...cookieOptions,
+    ...accessCookieOptions,
     maxAge: 60 * 3 // 3m 
   })
 
