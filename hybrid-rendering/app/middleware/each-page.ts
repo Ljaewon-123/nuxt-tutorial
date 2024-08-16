@@ -45,7 +45,11 @@ export default defineNuxtRouteMiddleware( async (to, from) => {
 
   console.log(verification.isInit)
 
-  if(verification.isInit) return navigateTo('/load')
+  if(verification.isInit) {
+    const path = useCookie('path')
+    path.value = JSON.stringify(to)
+    return navigateTo('/load')
+  }
 
   // console.log('path!!!!!!!!!!!!!!!!!!!!!!')
   // console.log(to)

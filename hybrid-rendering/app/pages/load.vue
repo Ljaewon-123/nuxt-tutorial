@@ -47,6 +47,7 @@ const path = useCookie('path')
 onMounted(async() => {
   // backFullPath.value = '뭔데 '
   console.log('cookie', path.value)
+  console.log(path.value.name)
   // const done = await $fetch('/api/token/cookie-set')
   // console.log(done, 'set done')
   // console.log('state', count.value)
@@ -75,8 +76,9 @@ onMounted(async() => {
     }
   })
   console.log(verification,'!!', verification.resultcode == 0)
+  // 초기 접근시 로딩 -> 원래 요청 화면 
   if(verification.resultcode == 0){
-    // await navigateTo('/')
+    await navigateTo({ name: path.value.name })
   }
 })
 

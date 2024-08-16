@@ -4,12 +4,12 @@ import type { $fetchMethod } from "~/types/$fetch-method.type"
 export default defineNuxtRouteMiddleware( async (to, from) => {
 
   // console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
-  if(to.name == 'load'){
-    // console.log(to)
-    // return abortNavigation()
-    // console.log('current load')
-    return 
-  }
+  // if(to.name == 'load'){
+  //   // console.log(to)
+  //   // return abortNavigation()
+  //   // console.log('current load')
+  //   return 
+  // }
 
   // const done = await $fetch('/api/token/cookie-set')
   // console.log('??')
@@ -18,15 +18,12 @@ export default defineNuxtRouteMiddleware( async (to, from) => {
   // const done2 = await $fetch('/api/token/cookie-get')
   // console.log(done2, 'get')
 
-  const count = useState('counter', () => {})
+  // const count = useState('counter', () => {})
 
-  const path = useCookie('path')
-  path.value = 'save'
+  // const path = useCookie('path')
+  // path.value = 'save'
 
-  const  nuxtApp  = useNuxtApp()
-  const test = userTestStore(nuxtApp.$pinia)
-  const { backFullPath } = storeToRefs(test);
-  // preset_cookie.$persist()
+
   // const test = userTestStore()
 // 
   // const { backFullPath } = test
@@ -35,12 +32,5 @@ export default defineNuxtRouteMiddleware( async (to, from) => {
   // })
   // const obj = computed(() => test.backFullPath)
 
-  // console.log(test, ';@@@@@@@@@@@@@@@@@@@', obj.value)
-  backFullPath.value = to
-  // console.log('global')
-  // console.log(backFullPath.value ,'pinia in middleware')
-  test.getInfo(to)
-  count.value = to as any
 
-  test.$state.backFullPath = to
 })

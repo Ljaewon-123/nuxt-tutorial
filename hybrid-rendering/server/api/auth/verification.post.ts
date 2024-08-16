@@ -14,8 +14,11 @@ export default defineEventHandler( async event => {
 
   // const cookie = parseCookies(event)
   // console.log(cookie,'parsecookie 쿠키 옵션과 무관하게 안나옴')
+  // ? undefined getCookie
+  // true
+  // ? test getCookie
   const atToken = getCookie(event, 'atToken')
-  console.log('?')
+  console.log('?', atToken, 'getCookie')
   // console.log(atToken, 'access token 로그인상태 예상 ?')
   if(!atToken) return { isInit: true, resultcode: -1 }
 
@@ -44,14 +47,14 @@ export default defineEventHandler( async event => {
 
   // ....갑자기 그냥 되네...? 나의 노력과 고민과 시간은???? 
   // 로그인시에는 이제 되는데 로그인 안되었을때 접근은 여전히 문제임 
-  const data = await $fetch<any>(`${config.apiUrl}/auth/local/signature`,{
-    method: 'post',
-    headers:{
-      'Authorization' : 'Bearer ' + atToken
-    },
-  })
-  console.log(data,'!')
-  data.resultcode == 0
-  return { isInit: false, resultcode: data.resultcode }
+  // const data = await $fetch<any>(`${config.apiUrl}/auth/local/signature`,{
+  //   method: 'post',
+  //   headers:{
+  //     'Authorization' : 'Bearer ' + atToken
+  //   },
+  // })
+  // console.log(data,'!')
+  // data.resultcode == 0
+  return { isInit: false, resultcode: 0 }
   // return 'done'
 })
