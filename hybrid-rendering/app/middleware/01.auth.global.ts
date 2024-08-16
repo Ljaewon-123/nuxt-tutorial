@@ -1,36 +1,57 @@
-import { userTestStore } from "~/stores/test"
-import type { $fetchMethod } from "~/types/$fetch-method.type"
-
 export default defineNuxtRouteMiddleware( async (to, from) => {
-
-  // console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
-  // if(to.name == 'load'){
-  //   // console.log(to)
-  //   // return abortNavigation()
-  //   // console.log('current load')
-  //   return 
-  // }
-
-  // const done = await $fetch('/api/token/cookie-set')
-  // console.log('??')
-  // console.log(done)
-  //  혹시 쿠키 보안 옵션때문일까봐 다시 해봤는데 여전히 undefined 값을 확인하고 해도 마찬가지 여기서는 안되는게 맞다.
-  // const done2 = await $fetch('/api/token/cookie-get')
-  // console.log(done2, 'get')
-
-  // const count = useState('counter', () => {})
-
-  // const path = useCookie('path')
-  // path.value = 'save'
-
-
+  
+  if(to.name == 'login'){
+    // console.log(to)
+    // return abortNavigation()
+    return 
+  }
+  
   // const test = userTestStore()
-// 
+  // test.$subscribe( cb => {console.log('cb', cb)})
   // const { backFullPath } = test
-  // test.$subscribe( cb => {
-  //   console.log('cb', cb.events)
-  // })
-  // const obj = computed(() => test.backFullPath)
+  // backFullPath.value = to
+  // console.log(test, backFullPath.value,';@@@@@@@@@@@@@@@@@@@')
 
+  if(to.name == 'load') return
+
+  // const { backFullPath } = storeToRefs(userTestStore());
+  // backFullPath.value = to
+
+  // console.log('each-page register!!!!', backFullPath.value)
+  
+  const verification = await $fetch('/api/auth/verification', {
+    method:'POST',
+    async onResponseError({ request, response, options }) {
+      const { status } = response
+      // console.log(response,' response')
+      if(status == 401){
+        try{
+          const data = await $fetch('/api/auth/refresh',{
+            method:'POST'
+          })
+          await $fetch('/api/auth/verification', {method:'POST'})
+        }
+        catch(e){
+          throw showError({
+            statusCode: 403,
+            statusMessage: 'invaild Auth login again with page router'
+          })
+        }
+      }
+    }
+  })
+
+  console.log(verification, 'global middle')
+
+  if(verification.isInit) {
+    const path = useCookie('path')
+    path.value = JSON.stringify(to)
+    return navigateTo('/load')
+    // return abortNavigation({statusCode: 600, statusMessage: 'loading'}) // error.vue 를 로딩처럼 쓰는법 도 있다 
+  }
+
+  // console.log('path!!!!!!!!!!!!!!!!!!!!!!')
+  // console.log(to)
+  // return abortNavigation()
 
 })

@@ -49,17 +49,20 @@ export default defineNuxtConfig({
     '/old-page': { redirect: '/new-page' },
   },
   // global보다 좋은점은 적어도 하이드레이트 에러는 안난다는거 하나 최초접근 해결 안됨 
-  hooks:{
-    'pages:extend'(pages){
-      function setMiddleware (pages: NuxtPage[]) {
-        pages.forEach(page => {
-          page.meta ||= {}
-          page.meta.middleware = ['each-page']
-        })
-      }
-      setMiddleware(pages)
-    }
-  },
+  // global mode: 'client' 여도 error.vue가면 hydrate 에러났었음 
+  // .... init load.vue 전략을 사용하면 그냥 글로벌만 있으면 되는거같은데??/
+  // 자세한건 서버 통신을 해봐야알겠지만 유력해보임
+  // hooks:{
+  //   'pages:extend'(pages){
+  //     function setMiddleware (pages: NuxtPage[]) {
+  //       pages.forEach(page => {
+  //         page.meta ||= {}
+  //         page.meta.middleware = ['each-page']
+  //       })
+  //     }
+  //     setMiddleware(pages)
+  //   }
+  // },
 
   modules: ["@nuxt/content", '@nuxtjs/i18n', '@nuxt/image', "vuetify-nuxt-module", '@pinia/nuxt'],
   vuetify:{
@@ -72,6 +75,12 @@ export default defineNuxtConfig({
   pinia: {
     storesDirs: ['./stores/**', './custom-folder/stores/**'],
   },
+  // plugins:[
+  //   {
+  //     src: '~/plugins/each-auth.ts',
+  //     mode: 'all'
+  //   }
+  // ],
   i18n: {
     vueI18n: './app/i18n/i18n.config.ts' // if you are using custom path, default
   },

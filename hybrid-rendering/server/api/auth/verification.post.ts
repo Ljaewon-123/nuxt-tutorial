@@ -20,6 +20,14 @@ export default defineEventHandler( async event => {
   const atToken = getCookie(event, 'atToken')
   console.log('?', atToken, 'getCookie')
   // console.log(atToken, 'access token 로그인상태 예상 ?')
+  // 어찌 보면 좋은 방법인데 에러 코드가 무조건 500으로 고정됨.. 이러면 커스텀 할수가 없음 
+  // if(!atToken) {
+  //   await sendRedirect(event,'roles') // HMR?? 요청중에는 동작안함 
+  //   throw createError({
+  //     statusCode: 999,
+  //     message:'loading'
+  //   })
+  // }
   if(!atToken) return { isInit: true, resultcode: -1 }
 
   // await useStorage('redis').setItem('foo:world', { hello: 'world' },{ ttl: 30 })
@@ -47,14 +55,14 @@ export default defineEventHandler( async event => {
 
   // ....갑자기 그냥 되네...? 나의 노력과 고민과 시간은???? 
   // 로그인시에는 이제 되는데 로그인 안되었을때 접근은 여전히 문제임 
-  // const data = await $fetch<any>(`${config.apiUrl}/auth/local/signature`,{
-  //   method: 'post',
-  //   headers:{
-  //     'Authorization' : 'Bearer ' + atToken
-  //   },
-  // })
-  // console.log(data,'!')
-  // data.resultcode == 0
+  const data = await $fetch<any>(`${config.apiUrl}/auth/local/signature`,{
+    method: 'post',
+    headers:{
+      'Authorization' : 'Bearer ' + atToken
+    },
+  })
+  console.log(data,'!')
+  data.resultcode == 0
   return { isInit: false, resultcode: 0 }
   // return 'done'
 })

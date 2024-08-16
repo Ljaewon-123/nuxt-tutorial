@@ -1,5 +1,3 @@
-import { userTestStore } from "~/stores/test"
-
 export default defineNuxtRouteMiddleware( async (to, from) => {
   
   if(to.name == 'login'){
@@ -40,16 +38,22 @@ export default defineNuxtRouteMiddleware( async (to, from) => {
           })
         }
       }
+
+      throw showError({
+        statusCode: 600,
+        statusMessage: 'loading'
+      })
+
     }
   })
 
-  console.log(verification.isInit)
+  console.log(verification.isInit, 'each page middle')
 
-  if(verification.isInit) {
-    const path = useCookie('path')
-    path.value = JSON.stringify(to)
-    return navigateTo('/load')
-  }
+  // if(verification.isInit) {
+  //   const path = useCookie('path')
+  //   path.value = JSON.stringify(to)
+  //   return navigateTo('/load')
+  // }
 
   // console.log('path!!!!!!!!!!!!!!!!!!!!!!')
   // console.log(to)

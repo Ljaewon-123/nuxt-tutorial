@@ -19,10 +19,12 @@
       <NuxtLink to="/login">Login</NuxtLink>
       <br>
       <NuxtLink to="/example">Wrong fetch example</NuxtLink>
-      <br>
-      <NuxtLink to="/island">Island</NuxtLink>
+      <!-- <br>
+      <NuxtLink to="/island">Island</NuxtLink> -->
       <br>
       <NuxtLink to="/token">token</NuxtLink>
+      <br>
+      <NuxtLink to="/roles">roles</NuxtLink>
       <br><br>
       <v-btn @click="logout">log out</v-btn>
     </div>

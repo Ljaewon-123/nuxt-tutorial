@@ -78,8 +78,10 @@ onMounted(async() => {
   console.log(verification,'!!', verification.resultcode == 0)
   // 초기 접근시 로딩 -> 원래 요청 화면 
   if(verification.resultcode == 0){
-    await navigateTo({ name: path.value.name })
+    return await navigateTo({ name: path.value.name })
   }
+
+  // throw
 })
 
 
