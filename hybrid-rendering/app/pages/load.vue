@@ -47,10 +47,12 @@ const path = useCookie('path')
 onMounted(async() => {
   // backFullPath.value = '뭔데 '
   console.log('cookie', path.value)
-  console.log('state', count.value)
-  console.log('pinia', test)
-  console.log('클라단', route)
-  console.log('router', router.options.history)
+  // const done = await $fetch('/api/token/cookie-set')
+  // console.log(done, 'set done')
+  // console.log('state', count.value)
+  // console.log('pinia', test)
+  // console.log('클라단', route)
+  // console.log('router', router.options.history)
   const verification = await $fetch<{ resultcode: number }>('/api/auth/verification', {
     method:'POST',
     async onResponseError({ request, response, options }) {

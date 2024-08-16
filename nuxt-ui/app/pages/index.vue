@@ -11,3 +11,20 @@
     <ULandingSection title="The flexibility to control your data" align="right" />
   </div>
 </template>
+
+<script setup lang="ts">
+
+definePageMeta({
+  middleware:[
+    (to, from) => {
+      console.log('index inner meddleware')
+    }
+  ]
+})
+
+console.log('page/index.vue')
+
+onMounted(() => {
+  console.log('page/index mounted hook')
+})
+</script>

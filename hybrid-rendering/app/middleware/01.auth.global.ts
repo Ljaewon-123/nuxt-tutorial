@@ -11,6 +11,13 @@ export default defineNuxtRouteMiddleware( async (to, from) => {
     return 
   }
 
+  // const done = await $fetch('/api/token/cookie-set')
+  // console.log('??')
+  // console.log(done)
+  //  혹시 쿠키 보안 옵션때문일까봐 다시 해봤는데 여전히 undefined 값을 확인하고 해도 마찬가지 여기서는 안되는게 맞다.
+  // const done2 = await $fetch('/api/token/cookie-get')
+  // console.log(done2, 'get')
+
   const count = useState('counter', () => {})
 
   const path = useCookie('path')
@@ -30,8 +37,8 @@ export default defineNuxtRouteMiddleware( async (to, from) => {
 
   // console.log(test, ';@@@@@@@@@@@@@@@@@@@', obj.value)
   backFullPath.value = to
-  console.log('global')
-  console.log(backFullPath.value ,'pinia in middleware')
+  // console.log('global')
+  // console.log(backFullPath.value ,'pinia in middleware')
   test.getInfo(to)
   count.value = to as any
 
