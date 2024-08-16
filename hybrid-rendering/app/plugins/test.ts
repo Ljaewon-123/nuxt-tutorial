@@ -9,4 +9,9 @@ export default defineNuxtPlugin((nuxtApp) => {
     //   console.log(..._args)
     // }
   })
+  nuxtApp.hook( 'app:created', () => {
+    /* your code goes here */
+    console.log('plugins test app start')
+    // return navigateTo('/load')
+  })
 })

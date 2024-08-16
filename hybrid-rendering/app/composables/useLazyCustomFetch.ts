@@ -10,12 +10,14 @@ export function useLazyCustomFetch<T>(
     $fetch: $fetch.create({
       async onResponseError({ request, response, options }) {
         const { status } = response
-    
+        console.log(response, '@@@@@@@@@@@@@@@@@!!!!!!!!!!!!!!!!!!!!!!!!')
+        
         if(status == 401){
           try{
             await $fetch('/api/auth/refresh',{
               method:'POST'
             })
+            // 잘못하면 무한 loop 에러조심 
             await fetch.refresh()
           }
           catch{
@@ -27,7 +29,11 @@ export function useLazyCustomFetch<T>(
         }
 
         //  401 아닌것들은 처리 어떻게?? 모달? 아니면 페이지 이동?
-
+        // 서버에서 전해주는 에러메시지 받기 
+        throw createError({
+          statusCode: status,
+          message: response._data.data.message
+        })
 
       }
     })

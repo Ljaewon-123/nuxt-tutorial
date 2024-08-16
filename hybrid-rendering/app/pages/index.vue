@@ -34,3 +34,29 @@
     </p>
   </div>
 </template>
+
+<script setup lang="ts">
+import { useCookie } from '#app';
+
+// nuxt.config에 선언된것과 같다. 
+// definePageMeta({
+//   middleware:[
+//     'each-page'
+//   ]
+// })
+
+// definePageMeta({
+//   async validate(r){
+//     // 미들보다 빠름 
+//     console.log('index/ validate')
+//     await $fetch('/api/auth/verification', {
+//       method:'POST',})
+//     return true
+//   }
+// })
+
+const test = useCookie('test')
+test.value = "3"
+
+// console.log(test.value)
+</script>

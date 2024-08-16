@@ -17,6 +17,10 @@
     <br>
 
     <v-btn @click="open">open token</v-btn>
+    <v-btn @click="throwExcute">throw Token</v-btn>
+    <br>
+    <p>data {{ throwData }}</p>
+    <p>error {{ throwError }}</p>
   </div>
 </template>
 
@@ -40,6 +44,12 @@ const { data: postData, execute: postExecute } = await useLazyCustomFetch('/api/
   body:{
     email: postInput
   },
+  watch: false,
+  immediate: false,
+})
+
+const { data: throwData, error: throwError, execute: throwExcute } = await useLazyCustomFetch('/api/token/throw',{
+  method: 'post',
   watch: false,
   immediate: false,
 })

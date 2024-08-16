@@ -48,6 +48,14 @@ export default defineNuxtConfig({
     // Add cors headers on API routes
     '/old-page': { redirect: '/new-page' },
   },
+  hooks:{
+    'pages:extend'(pages){
+      pages.forEach(page => {
+        page.meta ||= {}
+        page.meta.middleware = ['each-page']
+      })
+    }
+  },
 
   modules: ["@nuxt/content", '@nuxtjs/i18n', '@nuxt/image', "vuetify-nuxt-module"],
   vuetify:{
@@ -60,12 +68,6 @@ export default defineNuxtConfig({
   i18n: {
     vueI18n: './app/i18n/i18n.config.ts' // if you are using custom path, default
   },
-  plugins:[
-    {
-      src: '~/plugins/page-auth.ts',
-      mode: 'client'
-    }
-  ],
   future: {
     compatibilityVersion: 4,
   },

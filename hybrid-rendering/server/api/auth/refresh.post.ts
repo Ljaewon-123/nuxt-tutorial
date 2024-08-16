@@ -12,7 +12,7 @@ export default defineEventHandler( async event => {
     },
   })
 
-  
+  console.log('refresh token')
 
   setCookie(event, 'atToken', data.access_token, cookieOptions)
   setCookie(event, 'rtToken', data.refresh_token, cookieOptions)

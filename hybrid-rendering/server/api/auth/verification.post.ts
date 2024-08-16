@@ -11,7 +11,8 @@ export default defineEventHandler( async event => {
   // })
   // 기다린다고 되는게 아니라 특정 훅을 넘여야함 근데 초기 init 훅에서는 접근 안됨 
 
-  
+  // const cookie = parseCookies(event)
+  // console.log(cookie,'parsecookie 쿠키 옵션과 무관하게 안나옴')
   const atToken = getCookie(event, 'atToken')
   console.log(atToken)
   // await useStorage('redis').setItem('foo:world', { hello: 'world' },{ ttl: 30 })
@@ -37,6 +38,8 @@ export default defineEventHandler( async event => {
   // console.log(atToken, 'attoken', 'session', session)
   // 초기 server-side에서 쿠키 비어있는 문제 
 
+  // ....갑자기 그냥 되네...? 나의 노력과 고민과 시간은???? 
+  // 로그인시에는 이제 되는데 로그인 안되었을때 접근은 여전히 문제임 
   const data = await $fetch<boolean>(`${config.apiUrl}/auth/local/signature`,{
     method: 'post',
     headers:{
@@ -45,5 +48,5 @@ export default defineEventHandler( async event => {
   })
 
   return data
-  // return 'done'
+  return 'done'
 })
