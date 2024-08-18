@@ -46,8 +46,8 @@ export default defineNuxtRouteMiddleware( async (to, from) => {
   if(verification.isInit) {
     const path = useCookie('path')
     path.value = JSON.stringify(to)
-    return navigateTo('/load')
-    // return abortNavigation({statusCode: 600, statusMessage: 'loading'}) // error.vue 를 로딩처럼 쓰는법 도 있다 
+    // return navigateTo('/load')
+    return abortNavigation({statusCode: 600, statusMessage: 'loading'}) // error.vue 를 로딩처럼 쓰는법 도 있다 
   }
 
   // console.log('path!!!!!!!!!!!!!!!!!!!!!!')

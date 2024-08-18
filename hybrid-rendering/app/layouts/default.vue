@@ -25,6 +25,8 @@
       <NuxtLink to="/token">token</NuxtLink>
       <br>
       <NuxtLink to="/roles">roles</NuxtLink>
+      <br>
+      <NuxtLink to="/dynamic">dynamic</NuxtLink>
       <br><br>
       <v-btn @click="logout">log out</v-btn>
     </div>
