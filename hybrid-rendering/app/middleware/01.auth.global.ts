@@ -28,11 +28,11 @@ export default defineNuxtRouteMiddleware( async (to, from) => {
       const path = useCookie('path')
       path.value = JSON.stringify(to)
       code = 600
-      return abortNavigation({statusCode: 600, statusMessage: 'loading'}) // .... catch로 내린다. 
+      return abortNavigation({statusCode: 600, statusMessage: 'loading'}) // .... catch로 던진다. 
     }
   }
   catch{
-    // console.log('???',code)
+    console.log('???',code)
     if(code == 600){
       return abortNavigation({statusCode: 600, statusMessage: 'loading'}) // error.vue 를 로딩처럼 쓰는법 도 있다  
     }
@@ -51,6 +51,11 @@ export default defineNuxtRouteMiddleware( async (to, from) => {
         })
       }
     }
+
+    throw showError({
+      statusCode: 500,
+      statusMessage: 'invaild Auth login again with page router'
+    })
 
   }
 

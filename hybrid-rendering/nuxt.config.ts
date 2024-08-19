@@ -17,7 +17,10 @@ export default defineNuxtConfig({
   runtimeConfig:{
     apiUrl : process.env.API_URL,
     atSecret: process.env.AT_SECRET,
-    rtSecret: process.env.RT_SECRET
+    rtSecret: process.env.RT_SECRET,
+    public:{
+      amchartsKey: process.env.AMCHARTS_KEY
+    }
   },
 
   app:{
@@ -65,7 +68,7 @@ export default defineNuxtConfig({
   //   }
   // },
 
-  modules: ["@nuxt/content", '@nuxtjs/i18n', '@nuxt/image', "vuetify-nuxt-module", '@pinia/nuxt'],
+  modules: ["@nuxt/content", '@nuxtjs/i18n', '@nuxt/image', "vuetify-nuxt-module", '@pinia/nuxt', '@nuxtjs/tailwindcss'],
   vuetify:{
     vuetifyOptions:{
       theme:{

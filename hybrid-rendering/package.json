@@ -24,6 +24,7 @@
   "devDependencies": {
     "@nuxt/image": "^1.7.0",
     "@nuxtjs/i18n": "^8.3.3",
+    "@nuxtjs/tailwindcss": "^6.12.1",
     "@pinia/nuxt": "^0.5.3",
     "@types/jsonwebtoken": "^9.0.6",
     "@types/uuid": "^10.0.0",
