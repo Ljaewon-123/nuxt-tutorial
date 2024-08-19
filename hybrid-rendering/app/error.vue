@@ -55,14 +55,19 @@ onMounted(async() => {
         }
       }
     })
-    console.log('왜안됨!!!!!!!!')
     console.log(verification,'!!', verification.resultcode == 0)
-    // 초기 접근시 로딩 -> 원래 요청 화면 
+    console.log('여기는 토큰이 없는 : 로그인 되지 않은 상태만을 처리해야함 토큰 거부와는 다르게 처리')
+    console.log('아래 로직은 초기로딩 or 로그인이 되지 않았을때만 잡아야 이상적이다 ')
+    console.log('fetch 요청중에는 로딩이 아니래 error가 제대로 보여야함 ')
+    // error.vue -> error.vue 로 다른 코드를 보여주는 것은 불가능 하다. 현재로는
     if(verification.resultcode == 0){
-      console.log(path.value, 'fullpath', path.value.fullPath)
-      // clearError({ redirect: '/login' })
       await clearError({ redirect: full }) // 미리 꺼내놔야 router-view 사용 워닝이 안뜬다... 뭐이런게 다있지;;;
-      // return await navigateTo({name: path.value.name})
+      return
+    }
+    if(verification.resultcode == -1){
+      await clearError({ redirect: '/login' })
+      // await createError({statusCode: 401, message: '인증거부'}) // # 안됨 
+      return
     }
   }
 

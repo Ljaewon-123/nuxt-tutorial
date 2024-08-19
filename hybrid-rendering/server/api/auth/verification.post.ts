@@ -7,7 +7,7 @@ export default defineEventHandler( async event => {
   const config = useRuntimeConfig(event)
 
   const atToken = getCookie(event, 'atToken')
-  console.log('?', atToken, 'getCookie')
+  // console.log('?', atToken, 'getCookie')
 
   if(!atToken) return { isInit: true, resultcode: -1 }
 

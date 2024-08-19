@@ -1,9 +1,12 @@
 # Hello
 
-## I'm Piotr just index
+## I'm hihhihihihi just index
 
-Read more [about me](/about), or see my latest [projects](/projects)
+```typescript
+const a = 3
+const b = 5
+const c = a + b
+console.log(c) // i don't know
+```
 
 ## Latest on my blog
-
-::latest-blog-posts{:limit=3}

@@ -17,6 +17,7 @@ export default defineNuxtConfig({
   runtimeConfig:{
     apiUrl : process.env.API_URL,
     atSecret: process.env.AT_SECRET,
+    rtSecret: process.env.RT_SECRET
   },
 
   app:{
