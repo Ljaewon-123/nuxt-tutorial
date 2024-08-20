@@ -28,6 +28,8 @@ await callOnce(async () => {
   console.log('This will only be logged once Call Sign')
   // await $fetch('/api/token/delete-all-cookie',{method:'POST'})
 })
+
+// const errorStatus = computed(() => props.error)
 const errorStatus = ref({
   statusCode: props.error.statusCode,
   statusMessage: props.error.statusMessage,

@@ -6,6 +6,8 @@
       <br>
       <!-- <NuxtLink to="/admin">admin</NuxtLink> -->
       <br>
+      <NuxtLink to="/docs">DOCS</NuxtLink>
+      <br>
       <NuxtLink to="/admin/spa">SPA</NuxtLink>
       <br>
       <NuxtLink to="/blog">blog</NuxtLink>
@@ -19,8 +21,8 @@
       <NuxtLink to="/login">Login</NuxtLink>
       <br>
       <NuxtLink to="/example">Wrong fetch example</NuxtLink>
-      <!-- <br>
-      <NuxtLink to="/island">Island</NuxtLink> -->
+      <br>
+      <NuxtLink to="/island">Island</NuxtLink>
       <br>
       <NuxtLink to="/token">token</NuxtLink>
       <br>

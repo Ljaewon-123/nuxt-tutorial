@@ -42,7 +42,7 @@ export default defineNuxtRouteMiddleware( async (to, from) => {
         const verification = await $fetch('/api/auth/verification', {method:'POST'})
 
         console.log(verification, 'global middle 2차시도')
-
+        return
       }
       catch(e){
         throw showError({
@@ -52,9 +52,11 @@ export default defineNuxtRouteMiddleware( async (to, from) => {
       }
     }
 
+    console.log('!!!', code)
+
     throw showError({
       statusCode: 500,
-      statusMessage: 'invaild Auth login again with page router'
+      statusMessage: 'fin out'
     })
 
   }

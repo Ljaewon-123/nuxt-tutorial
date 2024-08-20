@@ -13,7 +13,7 @@ export default defineNuxtConfig({
     componentIslands: true,
     clientFallback: true
   },
-
+  extends: '@nuxt-themes/docus',
   runtimeConfig:{
     apiUrl : process.env.API_URL,
     atSecret: process.env.AT_SECRET,
@@ -26,7 +26,8 @@ export default defineNuxtConfig({
   app:{
     head: {
       title: 'Hybrid Rendering'
-    }
+    },
+    pageTransition: { name: "page", mode: "out-in" },
   },
   nitro: {
     storage: {
@@ -68,13 +69,26 @@ export default defineNuxtConfig({
   //   }
   // },
 
-  modules: ["@nuxt/content", '@nuxtjs/i18n', '@nuxt/image', "vuetify-nuxt-module", '@pinia/nuxt', '@nuxtjs/tailwindcss'],
+  modules: ["@nuxt/content", '@nuxtjs/i18n', '@nuxt/image', "vuetify-nuxt-module", '@pinia/nuxt'],
   vuetify:{
     vuetifyOptions:{
       theme:{
         defaultTheme: 'dark'
       }
     }
+  },
+  content: {
+    highlight: {
+      theme: {
+        default: "everforest-light",
+        dark: "github-dark",
+      },
+      langs: [
+        'javascript',
+        'typescript',
+        'java'
+      ]
+  },
   },
   pinia: {
     storesDirs: ['./stores/**', './custom-folder/stores/**'],
