@@ -99,6 +99,9 @@ export default defineNuxtConfig({
   //     mode: 'all'
   //   }
   // ],
+  devServer:{
+    port: 4000
+  },
   i18n: {
     vueI18n: './app/i18n/i18n.config.ts' // if you are using custom path, default
   },

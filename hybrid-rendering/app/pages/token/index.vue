@@ -28,7 +28,6 @@
 const visible = ref(false)
 const getInput = ref('init valuej')
 const postInput = ref('')
-
 const { data, execute, error: getError, refresh } = await useCustomFetch('/api/token',{
   method:'get',
   query:{
@@ -37,6 +36,7 @@ const { data, execute, error: getError, refresh } = await useCustomFetch('/api/t
   watch: false,
   immediate: false,
 })
+
 
 //  onResponseError 한번더 사용하면 오버라이드 
 const { data: postData, execute: postExecute } = await useLazyCustomFetch('/api/token',{
