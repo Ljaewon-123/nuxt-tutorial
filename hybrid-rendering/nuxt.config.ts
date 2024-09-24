@@ -88,7 +88,7 @@ export default defineNuxtConfig({
         'typescript',
         'java'
       ]
-  },
+    },
   },
   pinia: {
     storesDirs: ['./stores/**', './custom-folder/stores/**'],

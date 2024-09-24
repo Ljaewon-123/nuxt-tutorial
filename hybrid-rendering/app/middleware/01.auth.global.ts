@@ -1,5 +1,5 @@
 export default defineNuxtRouteMiddleware( async (to, from) => {
-  
+  return 
   if(to.name == 'login'){
     // console.log(to)
     // return abortNavigation()
