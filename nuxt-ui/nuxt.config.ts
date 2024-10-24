@@ -4,14 +4,15 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   nitro: {
     experimental: {
-      websocket: true
+      websocket: true,
+      openAPI: true
     },
   },
   future: {
     compatibilityVersion: 4,
   },
   extends: ['@nuxt/ui-pro'],
-  modules: ['@nuxt/ui', '@pinia/nuxt'],
+  modules: ['@nuxt/ui', '@pinia/nuxt', "@scalar/nuxt"],
   runtimeConfig:{
     reids:{
       host: 2179,

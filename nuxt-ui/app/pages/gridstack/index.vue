@@ -99,7 +99,7 @@ const widgets = ref([
     },
   },
 ])
-const grid = ref();
+const grid = shallowRef();
 function toggleEdit() {
   if (isEditing.value) {
     grid.value.disable();

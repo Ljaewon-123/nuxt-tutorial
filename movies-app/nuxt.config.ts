@@ -3,9 +3,12 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
   future: {compatibilityVersion: 4},
-  modules: [
-    '@nuxtjs/tailwindcss'
-  ],
+  modules: ['@nuxtjs/tailwindcss', "@scalar/nuxt"],
+  nitro: {
+    experimental: {
+      openAPI: true,
+    },
+  },
   runtimeConfig:{
     accessToken: process.env.accessToken
   },
