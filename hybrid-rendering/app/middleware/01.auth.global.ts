@@ -1,3 +1,11 @@
+// global을 사용하면 전역서버사이드에도 등록이 되어서 그때 토큰이나 세션을 인지하지못한다. 
+
+
+
+
+
+
+
 export default defineNuxtRouteMiddleware( async (to, from) => {
   return 
   if(to.name == 'login'){
