@@ -1,5 +1,5 @@
 # nuxt-tutorial
-nuxt-tutorial
+## This is a repo where I tried various things just for practice.
 
 ### ./hybrid-rendering
 nuxtIsland 및 
